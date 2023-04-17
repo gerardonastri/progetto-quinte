@@ -1,0 +1,22 @@
+.wrapper{
+   max-height: calc(100vh - 20px);
+}
+.home__calendar{
+    width: 100%;
+    height: 100%;
+}
+
+.fc{
+    height: 700px;
+}
+.fc td{
+    height: 150px;
+}
+.fc-scrollgrid-section-body table{
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.fc-day-disabled{
+    display: none;
+}

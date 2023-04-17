@@ -1,0 +1,189 @@
+.profile{
+
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 200px;
+    background-color: #1958aa;
+}
+
+.navbar h1{
+    margin: 0;
+    color: white;
+    font-size: 20px;
+}
+
+.navbar__links{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.navbar__links a, .navbar__links span{
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s ease-in;
+    text-decoration: none;
+}
+
+.navbar__links a:hover, .navbar__links span:hover{
+    color: chartreuse;
+}
+
+.profile__container{
+    display: flex;
+    background-color: var(--color-gray);
+}
+.profile__left{
+    flex: 1;
+}
+
+.profile__left{
+    padding-left: 80px;
+    margin-top: 50px;
+}
+
+.profile__left input{
+    background-color: white;
+}
+
+.profile__left h1{
+    margin-bottom: 0;
+}
+.profile__left span{
+    font-size: 13px;
+    color: gray;
+}
+
+
+
+/* PROFILE RIGHT  */
+.profile__right{
+    flex: 1;
+    background-color: aliceblue;
+    height: 900px;
+    padding: 50px 0 0 80px;
+
+}
+
+/* calendario  */
+.profile__right-date{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 80px;
+    position: relative;
+}
+
+.profile__right-text{
+    display: flex;
+    gap: 5px;
+}
+
+.profile__right-text h3{
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.profile__right-text span{
+    color: #1958aa;
+    cursor: pointer;
+    margin-top: 23px;
+}
+
+.calendar{
+    position: absolute;
+    right: 50px;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease-in;
+}
+.show{
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+.rdp{
+    margin-right: auto;
+}
+.rdp-month{
+    background-color: white;
+    padding: 10px 10px 0 10px;
+}
+
+/* .react-datepicker__day--outside-month {
+    color: transparent !important;
+    pointer-events: none;
+} */
+
+/* laboratorio */
+.profile__right-lab{
+    position: relative;
+}
+
+.profile__right-labs{
+    right: 50px;
+    top: 0;
+
+}
+
+.profile__right-labs div{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile__right-labs button{
+    margin-top: 10px;
+    background-color: var(--color-blue);
+    padding: 7px 35px;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 1rem;
+    transition: all 0.4s ease-in;
+}
+
+.profile__right-labs button:hover{
+    background-color: #1958aa;
+}
+
+/* PROFILE RIGHT ITEMS */
+.profile__right-itemsContainer{
+    margin-top: 40px;
+}
+.profile__right-itemsContainer h2{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.profile__right-items{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.profile__right-item{
+    background-color: white;
+    padding: 10px;
+}
+.profile__right-item_date{
+    color: gray;
+    font-size: 13px;
+}
+
+.profile__right-item h3{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.profile__right-item h3 span{
+    color: var(--color-blue);
+    font-size: 14px;
+}
