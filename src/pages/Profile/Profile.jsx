@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import './Profile.css'
 
 import { format } from 'date-fns';
@@ -7,6 +7,7 @@ import 'react-day-picker/dist/style.css';
 import {BsCalendar2EventFill} from 'react-icons/bs'
 import {ImLab} from 'react-icons/im'
 import {TbClockHour3} from 'react-icons/tb'
+import {axiosReq} from '../../utils/apiCalls'
 
 const Profile = () => {
 
@@ -29,6 +30,20 @@ const Profile = () => {
     //ora
     const [openHour, setOpenHour] = useState(false)
     const [ora, setOra] = useState("")
+
+    //richiesta dei laboratori disponibili
+    useEffect(() => {
+        const getLaboratori = async () => {
+            try {
+                const q = `day=${value.getDate()}&lab=${laboratorio}&ora=${ora}`
+                console.log(q);
+                // const res = await axiosReq.get("")
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getLaboratori()
+    }, [value, laboratorio, ora])
 
     //logout
     const handleLogout = async () => {
@@ -75,7 +90,7 @@ const Profile = () => {
         <div className="navbar">
             <h1>Area Utente</h1>
             <div className='navbar__links'>
-                <a href="/home">Home</a>
+                <a href="/">Home</a>
                 <span onClick={handleLogout}>Logout</span>
             </div>
         </div>
