@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import './Register.css'
-
+import {axiosReq} from '../../utils/apiCalls'
+import {useNavigate} from 'react-router-dom'
 
 const Register = () => {
 
@@ -9,12 +10,28 @@ const Register = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState(false)
+    const navigate = useNavigate()
 
     const handleSubmit = async () => {
-        if(email.length > 0 && password.length > 8 && nome.length > 0 && cognome.length > 0){
 
+        if(nome.indexOf("<") >= 0 || nome.indexOf(">") >= 0 || cognome.indexOf("<") >= 0 || cognome.indexOf(">") >= 0 || email.indexOf("<") >= 0 || email.indexOf(">") >= 0){
+            setError("Non fare attacchi XSS :)))))")
+            console.log(nome.indexOf("<"));
+            console.log(cognome.indexOf("<"));
+            console.log(email.indexOf("<"));
+            console.log(nome.indexOf(">"));
+            console.log(nome.indexOf(">"));
+            console.log(nome.indexOf(">"));
+        } else if (email.length > 0 && password.length > 8 && nome.length > 0 && cognome.length > 0 && email.length < 50 && nome.length < 30 && cognome.length < 30 && password.length < 50){
+            const res = await axiosReq.post("/register.php", {
+                nome,
+                cognome,
+                email,
+                password
+            })
+            navigate("/login")
         } else {
-            setError(true)
+            setError("Compila i campi")
         }
     }
 
@@ -42,7 +59,7 @@ const Register = () => {
                 <p>Hai già un account? <a href="/login">Accedi</a></p>
                 <button onClick={handleSubmit}>Invia</button>
                 {error && (
-                    <p className="error">Compila tutti i campi</p>
+                    <p className="error">{error}</p>
                 )}
             </div>
         </div>

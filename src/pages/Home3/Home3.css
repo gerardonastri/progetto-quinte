@@ -1,5 +1,6 @@
 .container{
     height: 100vh;
+    width: 100%;
 }
 
 .container__up{
@@ -21,9 +22,24 @@
 
 .orario__container{
     display: flex;
-
+    height: 100%;
 }
 .orario__day{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.orario__day-hours{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    height: 100%;
+}
+.orario__day-hour{
+    border: 1px solid black;
+    height: 100%;
     flex: 1;
 }
 
@@ -32,13 +48,48 @@
     text-align: center;
 }
 
+.orario__item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.orario__day-hour span{
+    font-size: 10px;
+    text-align: center;
+    display: block;
+}
+
+
+.orario__day:nth-child(5) .orario__day-hour{
+    border-right: 0 !important;
+}
+
+.orario__day:nth-child(1) .orario__day-hour{
+    border-left: 0 !important;
+}
+/* .orario__day-hour:last-child{
+    border-bottom: none;
+} */
 
 /* BANNER  */
 .banner{
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
 }
 .banner h1{
     font-size: 3rem;
     text-align: center;
     color: var(--color-blue);
+    margin: 0;
+}
+
+
+@media screen and (max-width: 700px) {
+    .container__up{
+        flex-direction: column;
+        height: unset;
+    }
 }

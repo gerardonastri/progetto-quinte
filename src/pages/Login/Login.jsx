@@ -1,17 +1,38 @@
 import React, { useState } from 'react'
 import './Login.css'
+import { loginFailure, loginStart, loginSuccess } from "../../redux/userSlice";
+import {useDispatch} from 'react-redux'
+import {axiosReq} from '../../utils/apiCalls'
+import { useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [error, setError] = useState(false)
+    const [error, setError] = useState("")
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const handleSubmit = async () => {
         if(email.length > 0 && password.length > 8){
-
+            try {
+                const res = await axiosReq.post("/login.php", {
+                    email,
+                    password
+                })
+                if(res.data?.nome){
+                    dispatch(loginSuccess(res.data))
+                    navigate(`/profile/${res.data.id}`)
+                } else {
+                    // window.location.reload()
+                }
+            } catch (error) {
+                console.log(error);
+                setError(error.message)
+            }
         } else {
-            setError(true)
+            setError("Compila tutti i campi")
         }
     }
 
@@ -31,7 +52,7 @@ const Login = () => {
                 <p>Non hai un account? <a href="/register">Registrati</a></p>
                 <button onClick={handleSubmit}>Invia</button>
                 {error && (
-                    <p className="error">Compila tutti i campi</p>
+                    <p className="error">{error}</p>
                 )}
             </div>
         </div>
