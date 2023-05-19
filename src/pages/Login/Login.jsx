@@ -23,7 +23,7 @@ const Login = () => {
                 })
                 if(res.data?.nome){
                     dispatch(loginSuccess(res.data))
-                    navigate(`/profile/${res.data.id}`)
+                    navigate(`/profile`)
                 } else {
                     // window.location.reload()
                 }
